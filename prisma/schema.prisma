@@ -9,3 +9,60 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+// Sample data for user
+// { 
+//   id: 1,
+//   name: 'John Doe',
+//   admin: false,
+//   domains: [ 'Beginner Friendly', 'Blockchain', 'Open Ended' ]
+// },
+
+model Users {
+  id       Int       @id @default(autoincrement())
+  name     String
+  password String
+  admin    Boolean   @default(false)
+  domains  Domains[]
+}
+
+// Sample data for Hackathon
+// {
+//   title: 'Fantom Hackathon Q1 2023',
+//   location: 'Online',
+//   url: 'https://fantomq12023.devpost.com/',
+//   dates: 'Jan 25 - Mar 08, 2023',
+//   domains: [ 'Beginner Friendly', 'Blockchain', 'Open Ended' ],
+//   prize_amount: '$50,000',
+//   registrations_count: 868,
+//   organization_name: 'Fantom Foundation',
+//   invite_only: false
+// },
+
+model Hackathon {
+  id                  Int       @id @default(autoincrement())
+  name                String
+  location            String
+  is_active           String
+  url                 String
+  dates               String
+  domains             Domains[]
+  prize_amount        String
+  registrations_count Int
+  organization_name   String
+  invite_only         Boolean
+}
+
+// Sample data for domain
+// {
+//   id: 1,
+//   name: 'Beginner Friendly',
+//   hackathons: [ 'Fantom Hackathon Q1 2023' ]
+// },
+
+model Domains {
+  id         Int         @id @default(autoincrement())
+  name       String
+  hackathons Hackathon[]
+  users      Users[]
+}
