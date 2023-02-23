@@ -1,4 +1,3 @@
-import { PrismaClient } from "@prisma/client";
 import { Request, Response } from "express";
 import { getAllDomainsName, getDomainName } from "../services/domains";
 
@@ -17,5 +16,7 @@ const getDomain = async (req: Request, res: Response) => {
     res.status(500).send(err);
   }
 };
+
+
 
 export { getAllDomains, getDomain };

@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "watch": "tsc -w",
-    "dev": "nodemon dist/server.js",
-    "start": "node dist/index.js",
-    "dev2": "nodemon --exec ts-node src/index.ts"
+    "dev": "nodemon dist/server.js"
   },
+  "prisma" : { 
+    "seed" : "ts-node prisma/seed.ts"
+  }, 
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SubstantialCattle5/Mell0w.git"

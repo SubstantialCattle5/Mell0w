@@ -1,9 +1,8 @@
 import express from "express";
-import { getAllDomains, getDomain } from "../controllers/domains";
-
+import * as controller from "../controllers/domains";
 const domains = express();
 
-domains.get("/all", getAllDomains);
-domains.get("/:name", getDomain);
+domains.get("/all", controller.getAllDomains);
+domains.get("/:name", controller.getDomain);
 
 export default domains;
