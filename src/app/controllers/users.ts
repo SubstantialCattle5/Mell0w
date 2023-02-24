@@ -27,6 +27,7 @@ export const userProfile = async (req: Request, res: Response) => {
 
 export const createUser = async (req: Request, res: Response) => {
   try {
+    console.log(req.body);
     res.json(await userService.createUser(req.body));
   } catch (err) {
     res.status(500).send(err);
@@ -35,6 +36,7 @@ export const createUser = async (req: Request, res: Response) => {
 
 export const updateUser = async (req: Request, res: Response) => {
   try {
+    console.log(req.body);
     res.json(await userService.updateUser(req.body));
   } catch (err) {
     res.status(500).send(err);

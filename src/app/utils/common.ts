@@ -1,4 +1,4 @@
-import { userData } from "../utils/interfaces";
+import { userData } from "./interfaces";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
@@ -27,4 +27,12 @@ export const fixingData = async (userData: userData) => {
     password,
     domainsId,
   };
+};
+
+export const checkAdmin = async (name: string) => {
+  const user = await prisma.users.findFirstOrThrow({
+    where: { name: name },
+  });
+
+  return user?.admin;
 };
