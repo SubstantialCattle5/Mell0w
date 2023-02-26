@@ -4,7 +4,11 @@ import { hackData } from "../utils/interfaces";
 const prisma = new PrismaClient();
 
 export const getAllHackathonsName = async () =>
-  await prisma.hackathon.findMany();
+  await prisma.hackathon.findMany({
+    include: {
+      domains: true,
+    },
+  });
 export const getHackathonName = async (hackName: String) =>
   await prisma.hackathon.findFirst({ where: { name: String(hackName) } });
 
